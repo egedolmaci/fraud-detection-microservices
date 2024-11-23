@@ -28,6 +28,23 @@ services:
       - postgres
     restart: unless-stopped
 
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: mysql-db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - postgres
+    restart: unless-stopped
+
 networks:
   postgres:
     driver: bridge
@@ -35,3 +52,4 @@ networks:
 volumes:
   postgres_data: # Added PostgreSQL data volume
   pgadmin:
+  mysql_data:

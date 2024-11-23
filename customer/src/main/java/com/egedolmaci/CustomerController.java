@@ -1,5 +1,6 @@
 package com.egedolmaci;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @PostMapping
     public void registerCustomer(@RequestBody CustomerRegistrationRequest customerRegistrationRequest) {
         log.info("new customer registration {}", customerRegistrationRequest);
         customerService.registerCustomer(customerRegistrationRequest);
